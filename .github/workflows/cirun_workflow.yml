@@ -1,0 +1,33 @@
+name: Docker Layer Cache Demo
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+     # runs-on: "cirun-runner--${{ github.run_id }}"
+    runs-on: "cirun-runner--${{ github.run_id }}"
+    permissions:
+      contents: read
+
+    env:
+      BUILDKIT_PROGRESS: plain  # Enables detailed output
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: network=host # Add this line
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          # push: true
+          tags: user/app:latest
+          cache-from: type=gha,url_v2=http://127.0.0.1:6420/ # Add this line
+          cache-to: type=gha,mode=max,url_v2=http://127.0.0.1:6420/ # Add this line
