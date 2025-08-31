@@ -3,7 +3,7 @@ runners:
     cloud: aws
     region: eu-west-1
     instance_type: t3.large
-    machine_image: ami-014e11280a6c67d17
+    machine_image: ami-0910be1e1d214d762
     labels:
       - "cirun-runner"
     extra_config:
