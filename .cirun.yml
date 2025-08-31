@@ -1,0 +1,11 @@
+runners:
+  - name: aws-runner
+    cloud: aws
+    region: eu-west-1
+    instance_type: t3.large
+    machine_image: ami-014e11280a6c67d17
+    labels:
+      - "cirun-runner"
+    extra_config:
+      cache: true # Enable caching
+      cache_debug: true
