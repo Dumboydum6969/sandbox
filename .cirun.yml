@@ -7,5 +7,5 @@ runners:
     labels:
       - "cirun-runner"
     extra_config:
-      cache: true # Enable caching
-      cache_debug: true
+      # cache: true # Enable caching
+      # cache_debug: true
