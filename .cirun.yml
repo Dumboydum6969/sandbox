@@ -8,5 +8,5 @@ runners:
       - "cirun-runner"
     extra_config:
       cache: true # Enable caching
-      monitoring: true
+      # monitoring: true
       # cache_debug: true
