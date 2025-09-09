@@ -17,6 +17,9 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Install docker
+        uses: docker/setup-docker-action@v4
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
@@ -27,6 +30,6 @@ jobs:
         with:
           context: .
           # push: true
-          tags: user/app:latest
+          load: true
           cache-from: type=gha,url_v2=http://127.0.0.1:6420/ # Add this line
           cache-to: type=gha,mode=max,url_v2=http://127.0.0.1:6420/ # Add this line
